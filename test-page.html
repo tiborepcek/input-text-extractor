@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input Extractor Test Page</title>
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+    body {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+      line-height: 1.6;
+    }
+    div {
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.25rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      background-color: #3c3c3c;
+      color: #d4d4d4;
+      border: 1px solid #555;
+      border-radius: 4px;
+    }
+    input:disabled {
+      background-color: #2a2a2a;
+      color: #888;
+    }
+    fieldset {
+      border: 1px solid #555;
+      padding: 1rem;
+      margin-top: 2rem;
+      border-radius: 4px;
+    }
+    legend {
+      font-weight: bold;
+      color: #a9a9a9;
+    }
+    div[contenteditable] {
+      background-color: #3c3c3c;
+      border: 1px solid #555;
+      padding: 8px;
+      min-height: 60px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Input Extractor Test Page</h1>
+  <p>This page contains various form fields to test the "Input Text Extractor" Chrome extension.</p>
+
+  <form onsubmit="return false;">
+    <fieldset>
+      <legend>Supported Fields</legend>
+      <div><label for="text-input">Text Input:</label><input type="text" id="text-input" value="This is a standard text input."></div>
+      <div><label for="search-input">Search Input:</label><input type="search" id="search-input" value="my search query"></div>
+      <div><label for="email-input">Email Input:</label><input type="email" id="email-input" value="test@example.com"></div>
+      <div><label for="url-input">URL Input:</label><input type="url" id="url-input" value="https://example.com"></div>
+      <div><label for="tel-input">Telephone Input:</label><input type="tel" id="tel-input" value="123-456-7890"></div>
+      <div><label for="password-input">Password Input:</label><input type="password" id="password-input" value="a-very-secret-password"></div>
+      <div><label for="textarea-field">Textarea:</label><textarea id="textarea-field" rows="4">This is some multi-line text inside a textarea element.
+It should be extracted correctly.</textarea></div>
+      <div><label for="editable-div">Editable Div:</label><div id="editable-div" contenteditable="true">This is an <b>editable</b> div.
+It can contain <i>rich text</i>.</div></div>
+      <div><label for="empty-input">Empty Text Input:</label><input type="text" id="empty-input" value=""></div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Hidden & Disabled Fields (Should be ignored)</legend>
+      <div><label for="disabled-input">Disabled Input:</label><input type="text" id="disabled-input" value="You can't edit me." disabled></div>
+      <div><label for="hidden-css-input">Hidden via CSS:</label><input type="text" id="hidden-css-input" value="I am hidden with display:none" style="display: none;"></div>
+      <input type="hidden" id="hidden-type-input" value="I am an input of type=hidden">
+    </fieldset>
+
+    <fieldset>
+      <legend>Unsupported Fields (Should be ignored)</legend>
+      <div><label for="number-input">Number Input:</label><input type="number" id="number-input" value="12345"></div>
+      <div><label for="date-input">Date Input:</label><input type="date" id="date-input"></div>
+      <div><label for="color-input">Color Picker:</label><input type="color" id="color-input" value="#ff0000"></div>
+      <div><label>Checkbox:</label><input type="checkbox" id="checkbox-input" checked> I agree</div>
+      <div><label>Radio Button:</label><input type="radio" name="radio-group" value="option1" checked> Option 1</div>
+    </fieldset>
+  </form>
+
+</body>
+</html>

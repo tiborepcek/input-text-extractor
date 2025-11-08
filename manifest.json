@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Input Text Extractor",
+  "version": "1.0",
+  "description": "Extracts text from all input boxes on a page and saves it to a text file.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "notifications",
+    "contextMenus"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Extract Input Text",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
